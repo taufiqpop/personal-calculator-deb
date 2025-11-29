@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kalkulator Pribadi
+Comment=Kalkulator sederhana buatan Master
+Exec=/usr/bin/kalkulator
+Icon=kalkulator
+Terminal=false
+Type=Application
+Categories=Utility;Calculator;

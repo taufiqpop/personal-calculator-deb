@@ -1,0 +1,44 @@
+# kalkulator.py
+import tkinter as tk
+
+def klik(teks):
+    entry_var.set(entry_var.get() + str(teks))
+
+def hapus():
+    entry_var.set("")
+
+def hitung():
+    try:
+        entry_var.set(eval(entry_var.get()))
+    except:
+        entry_var.set("Error")
+
+root = tk.Tk()
+root.title("Kalkulator Pribadi")
+
+entry_var = tk.StringVar()
+entry = tk.Entry(root, textvariable=entry_var, font=("Arial", 20), bd=5, relief="ridge"), 
+entry.grid(row=0, column=0, columnspan=4)
+
+buttons = [
+    '7','8','9','/',
+    '4','5','6','*',
+    '1','2','3','-',
+    '0','.','=','+'
+]
+
+row_val = 1
+col_val = 0
+for b in buttons:
+    if b == "=":
+        tk.Button(root, text=b, width=5, height=2, command=hitung).grid(row=row_val, column=col_val)
+    else:
+        tk.Button(root, text=b, width=5, height=2, command=lambda x=b: klik(x)).grid(row=row_val, column=col_val)
+    col_val += 1
+    if col_val > 3:
+        col_val = 0
+        row_val += 1
+
+tk.Button(root, text="C", width=5, height=2, command=hapus).grid(row=row_val, column=col_val)
+
+root.mainloop()
